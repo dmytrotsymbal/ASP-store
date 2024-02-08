@@ -1,10 +1,73 @@
 ﻿@page
-@model IndexModel
+@model store.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<br>
+<h2>Search client</h2>
+<hr />
+
+<form method="GET">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input type="text" name="name" class="form-control" value="@Model.clientInfo.name" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <input type="text" name="email" class="form-control" value="@Model.clientInfo.email" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Phone</label>
+        <div class="col-sm-6">
+            <input type="text" name="phone" class="form-control" value="@Model.clientInfo.phone" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-6">
+            <input type="text" name="address" class="form-control" value="@Model.clientInfo.address" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-6">
+            <button type="submit" class="btn btn-success">Search</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Created at</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model.serchedClients)
+            {
+                <tr>
+                    <td>@client.id</td>
+                    <td>@client.name</td>
+                    <td>@client.email</td>
+                    <td>@client.phone</td>
+                    <td>@client.address</td>
+                    <td>@client.created_at</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
